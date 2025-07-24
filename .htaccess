@@ -1,0 +1,30 @@
+RewriteEngine On
+
+# Handle favicon and icon files directly
+RewriteRule ^favicon\.ico$ favicon.ico [L]
+RewriteRule ^apple-touch-icon\.png$ apple-touch-icon.png [L]
+RewriteRule ^favicon-([0-9]+)x([0-9]+)\.png$ favicon-$1x$2.png [L]
+RewriteRule ^site\.webmanifest$ site.webmanifest [L]
+
+# Allow access to admin directory
+RewriteRule ^admin/(.*)$ admin/$1 [L]
+
+# Allow access to assets directory
+RewriteRule ^assets/(.*)$ assets/$1 [L]
+
+# Allow access to config directory
+RewriteRule ^config/(.*)$ config/$1 [L]
+
+# Allow access to database directory
+RewriteRule ^database/(.*)$ database/$1 [L]
+
+# Redirect root to pages/index.php
+DirectoryIndex pages/index.php
+
+# Allow direct access to pages
+RewriteRule ^pages/(.*)$ pages/$1 [L]
+
+# Handle other requests - redirect to pages folder
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ pages/$1 [L]
