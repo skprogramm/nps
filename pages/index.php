@@ -30,6 +30,8 @@ date_default_timezone_set('Asia/Kolkata');
     <meta name="msapplication-TileColor" content="#d62828">
     
 
+
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -75,6 +77,25 @@ date_default_timezone_set('Asia/Kolkata');
     <!-- Legacy CSS for backward compatibility -->
     <link rel="stylesheet" href="style.css">
     
+    <!-- Meta Pixel Code START -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1265125418402344');
+        fbq('track', 'PageView');
+    </script>
+        
+    <noscript>
+        <img height="1" width="1" style="display:none"
+          src="https://www.facebook.com/tr?id=1265125418402344&ev=PageView&noscript=1"/>
+        
+    </noscript>   
     
 </head>
 <body> 
