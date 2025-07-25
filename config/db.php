@@ -1,7 +1,7 @@
 <?php
 $host = 'localhost';
 $user = 'root';
-$pass = '';
+$pass = 'phpIsBest%$#@!511021428';
 $dbname = 'nps_education';
 
 // Create connection
