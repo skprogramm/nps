@@ -39,7 +39,7 @@ $logo_path = (strpos($_SERVER['REQUEST_URI'], '/pages/') !== false)
         </div>
         
         <!-- Desktop Navigation -->
-        <ul class="hidden md:flex space-x-5 font-medium">
+        <ul class="hidden lg:flex space-x-5 font-medium">
             <?php foreach ($nav_links as $key => $link): ?>
                 <li>
                     <a href="<?php echo $link['url']; ?>" 
@@ -51,18 +51,18 @@ $logo_path = (strpos($_SERVER['REQUEST_URI'], '/pages/') !== false)
         </ul>
         
         <!-- Mobile Menu Button -->
-        <button id="menuBtn" class="md:hidden text-2xl">
+        <button id="menuBtn" class="lg:hidden text-2xl p-2 rounded-md hover:bg-gray-100 transition-colors">
             <i class="fas fa-bars"></i>
         </button>
     </nav>
     
     <!-- Mobile Navigation -->
-    <div id="mobileMenu" class="md:hidden bg-white hidden shadow-lg">
+    <div id="mobileMenu" class="lg:hidden bg-white hidden shadow-lg absolute top-full left-0 right-0 border-t">
         <ul class="flex flex-col p-4 space-y-4 font-medium">
             <?php foreach ($nav_links as $key => $link): ?>
                 <li>
                     <a href="<?php echo $link['url']; ?>" 
-                       class="<?php echo isset($link['class']) ? $link['class'] : ($current_page === $key ? 'text-[var(--nps-red)]' : 'hover:text-[var(--nps-red)]'); ?>">
+                       class="block py-2 px-4 rounded-md transition-colors <?php echo isset($link['class']) ? str_replace(['bg-[var(--nps-green)]', 'hover:bg-[var(--nps-red)]'], ['bg-blue-500', 'hover:bg-red-500'], $link['class']) : ($current_page === $key ? 'text-blue-600 bg-blue-50' : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'); ?>">
                         <?php echo $link['text']; ?>
                     </a>
                 </li>
@@ -222,6 +222,25 @@ nav a:not(.apply-now-btn):hover::after {
 }
 
 /* Responsive adjustments */
+@media (max-width: 1024px) {
+    /* Ensure mobile menu is positioned correctly */
+    #mobileMenu {
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+    }
+    
+    /* Better spacing for mobile menu items */
+    #mobileMenu ul {
+        padding: 1.5rem;
+    }
+    
+    #mobileMenu a {
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        border-radius: 0.375rem;
+    }
+}
+
 @media (max-width: 768px) {
     .container {
         padding-left: 1rem;
@@ -234,6 +253,36 @@ nav a:not(.apply-now-btn):hover::after {
     
     header img {
         height: 2.5rem;
+    }
+    
+    /* Adjust logo and brand text on smaller screens */
+    nav h2 {
+        font-size: 1rem !important;
+    }
+    
+    header img {
+        height: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Even smaller screens adjustments */
+    nav h2 {
+        font-size: 0.9rem !important;
+    }
+    
+    header img {
+        height: 1.75rem;
+    }
+    
+    .container {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+    
+    #menuBtn {
+        padding: 0.5rem;
+        font-size: 1.5rem;
     }
 }
 </style>
