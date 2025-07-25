@@ -28,8 +28,6 @@ date_default_timezone_set('Asia/Kolkata');
     <link rel="manifest" href="../site.webmanifest">
     <meta name="theme-color" content="#d62828">
     <meta name="msapplication-TileColor" content="#d62828">
-    
-
 
 
     <!-- Tailwind CSS CDN -->
@@ -95,7 +93,7 @@ date_default_timezone_set('Asia/Kolkata');
         <img height="1" width="1" style="display:none"
           src="https://www.facebook.com/tr?id=1265125418402344&ev=PageView&noscript=1"/>
         
-    </noscript>   
+    </noscript>
     
 </head>
 <body> 
