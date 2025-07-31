@@ -93,7 +93,38 @@ if (!empty($params)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Admissions | NPS Admin</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Tailwind CSS CDN with local fallback -->
+    <script src="https://cdn.tailwindcss.com" 
+            onerror="document.head.innerHTML += '<link rel=\'stylesheet\' href=\'../assets/css/tailwind.css\'>';"
+            onload="console.log('CDN loaded successfully');"></script>
+    
+    <!-- Additional fallback script -->
+    <script>
+        // Double-check if Tailwind is working after page load
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var testElement = document.createElement('div');
+                testElement.className = 'hidden';
+                document.body.appendChild(testElement);
+                
+                var computedStyle = window.getComputedStyle(testElement);
+                var tailwindWorking = computedStyle.display === 'none';
+                
+                document.body.removeChild(testElement);
+                
+                if (!tailwindWorking) {
+                    // If CDN didn't work, load local CSS
+                    var localLink = document.createElement('link');
+                    localLink.rel = 'stylesheet';
+                    localLink.href = '../assets/css/tailwind.css';
+                    localLink.onload = function() {
+                        console.log('Local Tailwind CSS loaded as fallback');
+                    };
+                    document.head.appendChild(localLink);
+                }
+            }, 100);
+        });
+    </script>
 </head>
 <body class="bg-gray-100">
     <nav class="bg-white p-4 shadow flex justify-between items-center">

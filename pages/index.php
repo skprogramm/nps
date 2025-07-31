@@ -22,16 +22,44 @@ date_default_timezone_set('Asia/Kolkata');
     <!-- Favicon and Icons -->
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
     <link rel="manifest" href="../site.webmanifest">
     <meta name="theme-color" content="#d62828">
     <meta name="msapplication-TileColor" content="#d62828">
     
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS CDN with local fallback -->
+    <script src="https://cdn.tailwindcss.com" 
+            onerror="document.head.innerHTML += '<link rel=\'stylesheet\' href=\'../assets/css/tailwind.css\'>';"
+            onload="console.log('CDN loaded successfully');"></script>
+    
+    <!-- Additional fallback script -->
+    <script>
+        // Double-check if Tailwind is working after page load
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var testElement = document.createElement('div');
+                testElement.className = 'hidden';
+                document.body.appendChild(testElement);
+                
+                var computedStyle = window.getComputedStyle(testElement);
+                var tailwindWorking = computedStyle.display === 'none';
+                
+                document.body.removeChild(testElement);
+                
+                if (!tailwindWorking) {
+                    // If CDN didn't work, load local CSS
+                    var localLink = document.createElement('link');
+                    localLink.rel = 'stylesheet';
+                    localLink.href = '../assets/css/tailwind.css';
+                    localLink.onload = function() {
+                        console.log('Local Tailwind CSS loaded as fallback');
+                    };
+                    document.head.appendChild(localLink);
+                }
+            }, 100);
+        });
+    </script>
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -114,7 +142,7 @@ date_default_timezone_set('Asia/Kolkata');
                     "Join hands with us to build a skilled and self-reliant India."
                 </blockquote>
                 <div class="cta-buttons">
-                    <a href="admission.php" class="inline-block bg-[var(--nps-green)] hover:bg-[var(--nps-red)] text-white font-semibold px-8 py-3 rounded-xl transition">Enroll Now</a>
+                    <a href="franchise.php" class="inline-block bg-[var(--nps-green)] hover:bg-[var(--nps-red)] text-white font-semibold px-8 py-3 rounded-xl transition">Become a partner</a>
                 </div>
             </div>
         </section>
@@ -320,13 +348,13 @@ date_default_timezone_set('Asia/Kolkata');
                         <div class="icon">📧</div>
                         <h3>Email Us</h3>
                         <p>npseducation45@gmail.com</p>
-                        <p>support@npsvision.com</p>
+                        <p>npseducation@npsvision.com</p>
                     </div>
                     <div class="contact-item fade-in">
                         <div class="icon">📞</div>
                         <h3>Call Us</h3>
-                        <p> +91-97359 93004</p>
-                        <p> +91-62941 88820</p>
+                        <p> +91- 97359 93004</p>
+                        <p> +91- 03512220467</p>
                     </div>
                     <div id="nps"class="contact-item fade-in">
                         <div class="icon">🌐</div>
@@ -600,7 +628,7 @@ date_default_timezone_set('Asia/Kolkata');
             
             const formHTML = `
                 <div style="margin-top: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-                    <p style="font-size:1.5rem;text-align: center; margin-bottom: 1.5rem;color: white;">For Franchisees Contact Us</p>
+                    <p style="font-size:1.5rem;text-align: center; margin-bottom: 1.5rem;color: white;">For Queries Contact Us</p>
 
                     <form id="contactForm" style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 15px; backdrop-filter: blur(10px);">
                         <div style="display: grid; gap: 1rem; color: #333;">

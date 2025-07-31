@@ -19,6 +19,15 @@ if ($contactResult) {
 } else {
     $totalContacts = 0;
 }
+
+// Fetch franchise applications count
+$franchiseResult = $conn->query("SELECT COUNT(*) AS total FROM franchises");
+if ($franchiseResult) {
+    $franchiseData = $franchiseResult->fetch_assoc();
+    $totalFranchises = $franchiseData['total'];
+} else {
+    $totalFranchises = 0;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +35,38 @@ if ($contactResult) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard | NPS Education</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS CDN with local fallback -->
+    <script src="https://cdn.tailwindcss.com" 
+            onerror="document.head.innerHTML += '<link rel=\'stylesheet\' href=\'../assets/css/tailwind.css\'>';"
+            onload="console.log('CDN loaded successfully');"></script>
+    
+    <!-- Additional fallback script -->
+    <script>
+        // Double-check if Tailwind is working after page load
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var testElement = document.createElement('div');
+                testElement.className = 'hidden';
+                document.body.appendChild(testElement);
+                
+                var computedStyle = window.getComputedStyle(testElement);
+                var tailwindWorking = computedStyle.display === 'none';
+                
+                document.body.removeChild(testElement);
+                
+                if (!tailwindWorking) {
+                    // If CDN didn't work, load local CSS
+                    var localLink = document.createElement('link');
+                    localLink.rel = 'stylesheet';
+                    localLink.href = '../assets/css/tailwind.css';
+                    localLink.onload = function() {
+                        console.log('Local Tailwind CSS loaded as fallback');
+                    };
+                    document.head.appendChild(localLink);
+                }
+            }, 100);
+        });
+    </script>
 </head>
 <body class="bg-gray-100">
     <nav class="bg-white p-4 shadow flex justify-between items-center">
@@ -48,6 +88,10 @@ if ($contactResult) {
                 <div class="text-4xl font-bold text-blue-600"><?= $totalContacts ?></div>
                 <p class="mt-2 text-gray-700">Contact Messages</p>
             </div>
+            <div class="bg-white p-6 rounded-lg shadow text-center">
+                <div class="text-4xl font-bold text-orange-600"><?= $totalFranchises ?></div>
+                <p class="mt-2 text-gray-700">Franchise Applications</p>
+            </div>
             <a href="manage-admissions.php" class="bg-white p-6 rounded-lg shadow hover:bg-blue-50 text-center">
                 <div class="text-xl font-semibold text-blue-600">Manage Admissions</div>
                 <p class="text-gray-600 text-sm">View submitted student forms</p>
@@ -59,6 +103,10 @@ if ($contactResult) {
             <a href="manage-courses.php" class="bg-white p-6 rounded-lg shadow hover:bg-blue-50 text-center">
                 <div class="text-xl font-semibold text-blue-600">Manage Courses</div>
                 <p class="text-gray-600 text-sm">Add, edit or remove offered courses</p>
+            </a>
+            <a href="manage-franchises.php" class="bg-white p-6 rounded-lg shadow hover:bg-orange-50 text-center">
+                <div class="text-xl font-semibold text-orange-600">Manage Franchises</div>
+                <p class="text-gray-600 text-sm">View franchise applications</p>
             </a>
         </div>
     </main>

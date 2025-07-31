@@ -1,9 +1,9 @@
 <?php
 require_once __DIR__ . '/../config/db.php';
+require_once __DIR__ . '/../config/mail.php';
 
-// === Settings ===
-$adminEmail = 'npseducation45@gmail.com';    // admin alert address
-$fromEmail  = 'info@education.npsvission.in';        // sender address (must be valid on host)
+// Initialize mailer (credentials loaded from .env file)
+$mailer = new NPSMailer();
 
 // === Handle POST submission ===
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -33,18 +33,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $conn->prepare("INSERT INTO admissions (name, email, phone, guirdian_name, qualification, address, district, state) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param('ssssssss', $name, $email, $phone, $guirdian_name, $qualification, $address, $district, $state);
         if ($stmt->execute()) {
-            // === Send emails ===
-            // 1. Confirmation to Applicant
-            $subjectUser = 'NPS Education - Your Application Received';
-            $msgUser = "Dear $name,\n\nThank you for applying for the program at NPS Education. Our admissions team will contact you shortly.\n\nRegards,\nNPS Education Malda";
-            $headersUser = "From: $fromEmail\r\nReply-To: $fromEmail\r\n";
-            @mail($email, $subjectUser, $msgUser, $headersUser);
-
-            // 2. Alert to Admin
-            $subjectAdmin = "New Admission Application - $name";
-            $msgAdmin = "A new application has been submitted:\n\nName: $name\nEmail: $email\nPhone: $phone\nQualification: $qualification\nAddress: $address\nDistrict: $district\n\nLogin to admin panel to view more details.";
-            $headersAdmin = "From: $fromEmail\r\nReply-To: $email\r\n";
-            @mail($adminEmail, $subjectAdmin, $msgAdmin, $headersAdmin);
+            // === Send emails using NPSMailer ===
+            $studentData = [
+                'name' => $name,
+                'email' => $email,
+                'phone' => $phone,
+                'qualification' => $qualification,
+                'address' => $address,
+                'district' => $district
+            ];
+            
+            // Send confirmation to student
+            $mailer->sendAdmissionConfirmation($email, $name);
+            
+            // Send alert to admin
+            $mailer->sendAdmissionAlert($studentData);
 
             $success = true;
         } else {
@@ -63,20 +66,58 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Favicon and Icons -->
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
     <link rel="manifest" href="../site.webmanifest">
     <meta name="theme-color" content="#667eea">
     
-    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layouts.css">
+    <link rel="stylesheet" href="css/pages.css"> 
+    <link rel="stylesheet" href="css/utilities.css">
+    
+    <!-- Legacy CSS for backward compatibility -->
+
+    <link rel="stylesheet" href="style.css">
+        <!-- Tailwind CSS CDN with local fallback -->
+    <script src="https://cdn.tailwindcss.com" 
+            onerror="document.head.innerHTML += '<link rel=\'stylesheet\' href=\'../assets/css/tailwind.css\'>';"
+            onload="console.log('CDN loaded successfully');"></script>
+    
+    <!-- Additional fallback script -->
+    <script>
+        // Double-check if Tailwind is working after page load
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var testElement = document.createElement('div');
+                testElement.className = 'hidden';
+                document.body.appendChild(testElement);
+                
+                var computedStyle = window.getComputedStyle(testElement);
+                var tailwindWorking = computedStyle.display === 'none';
+                
+                document.body.removeChild(testElement);
+                
+                if (!tailwindWorking) {
+                    // If CDN didn't work, load local CSS
+                    var localLink = document.createElement('link');
+                    localLink.rel = 'stylesheet';
+                    localLink.href = '../assets/css/tailwind.css';
+                    localLink.onload = function() {
+                        console.log('Local Tailwind CSS loaded as fallback');
+                    };
+                    document.head.appendChild(localLink);
+                }
+            }, 100);
+        });
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { font-family: 'Poppins', sans-serif; }
         .form-container {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            min-height: 120vh;
             display: flex;
             align-items: center;
             justify-content: center;

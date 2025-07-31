@@ -17,7 +17,7 @@ $nav_links = $custom_links ?? [
     'placement' => ['url' => 'index.php#placement', 'text' => 'Placement'],
     'success' => ['url' => 'index.php#success', 'text' => 'Success Stories'],
     'contact' => ['url' => 'index.php#contact', 'text' => 'Contact'],
-    'apply' => ['url' => 'admission.php', 'text' => 'Apply Now', 'class' => 'apply-now-btn bg-[var(--nps-green)] hover:bg-[var(--nps-red)] text-white px-4 py-2 rounded-lg transition']
+    'apply' => ['url' => 'admission.php', 'text' => 'Apply For Admission', 'class' => 'apply-now-btn bg-[var(--nps-green)] hover:bg-[var(--nps-red)] text-white px-2 py-2 rounded-lg transition']
 ];
 
 // Determine logo path based on current directory
