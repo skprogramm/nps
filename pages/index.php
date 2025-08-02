@@ -136,13 +136,16 @@ date_default_timezone_set('Asia/Kolkata');
           <!-- Hero Section -->
         <section id="home" class="hero">
             <div class="container">
-                <h1>NPS Education</h1>
+                <h1 style='padding-top: 10rem;'>NPS Education</h1>
                 <p class="tagline">Empowering Youth. Building Futures.</p>
-                <blockquote style="font-style: italic; font-size: 1.2rem; margin: 2rem 0;">
+                <div class="cta-buttons">
+                    <a href="admission.php" class = "apply-now-btn bg-[var(--nps-green)] hover:bg-[var(--nps-red)] text-white px-2 py-2 rounded-lg transition">Take Admission</a>
+                </div>
+                <blockquote style="font-style: italic; font-size: 1.2rem; margin: 5rem 2rem 1rem 1rem;">
                     "Join hands with us to build a skilled and self-reliant India."
                 </blockquote>
                 <div class="cta-buttons">
-                    <a href="franchise.php" class="inline-block bg-[var(--nps-green)] hover:bg-[var(--nps-red)] text-white font-semibold px-8 py-3 rounded-xl transition">Become a partner</a>
+                    <a href="franchise.php" class="inline-block bg-[var(--nps-green)] hover:bg-[var(--nps-red)] text-white font-semibold px-2 py-2 rounded-xl transition">Become a partner</a>
                 </div>
             </div>
         </section>
