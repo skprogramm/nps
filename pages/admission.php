@@ -68,48 +68,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
     <link rel="manifest" href="../site.webmanifest">
     <meta name="theme-color" content="#667eea">
-    
-
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/layouts.css">
-    <link rel="stylesheet" href="css/pages.css"> 
-    <link rel="stylesheet" href="css/utilities.css">
-    
-    <!-- Legacy CSS for backward compatibility -->
 
     <link rel="stylesheet" href="style.css">
-        <!-- Tailwind CSS CDN with local fallback -->
-    <script src="https://cdn.tailwindcss.com" 
-            onerror="document.head.innerHTML += '<link rel=\'stylesheet\' href=\'../assets/css/tailwind.css\'>';"
-            onload="console.log('CDN loaded successfully');"></script>
-    
-    <!-- Additional fallback script -->
-    <script>
-        // Double-check if Tailwind is working after page load
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                var testElement = document.createElement('div');
-                testElement.className = 'hidden';
-                document.body.appendChild(testElement);
-                
-                var computedStyle = window.getComputedStyle(testElement);
-                var tailwindWorking = computedStyle.display === 'none';
-                
-                document.body.removeChild(testElement);
-                
-                if (!tailwindWorking) {
-                    // If CDN didn't work, load local CSS
-                    var localLink = document.createElement('link');
-                    localLink.rel = 'stylesheet';
-                    localLink.href = '../assets/css/tailwind.css';
-                    localLink.onload = function() {
-                        console.log('Local Tailwind CSS loaded as fallback');
-                    };
-                    document.head.appendChild(localLink);
-                }
-            }, 100);
-        });
+    <link rel="stylesheet" href="utilities.css">
+
+    <!-- Tailwind CSS with Local Priority -->
+    <link rel="stylesheet" href="../assets/css/tailwind.css" onerror="this.onerror=null; this.href='https://cdn.tailwindcss.com/';">
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -230,7 +194,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="form-container">
         <div class="form-card w-full max-w-2xl p-8">
             <div class="text-center mb-8">
-                <h1 class="text-3xl font-bold text-gray-800 mb-2">Join NPS Education</h1>
+                <h1 class="text-3xl text-gray-800 mb-2">Join NPS Education</h1>
                 <p class="text-gray-600">Start Your Journey Towards Success</p>
             </div>
 

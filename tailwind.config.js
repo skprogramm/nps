@@ -1,22 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./**/*.php",
-    "./**/*.html",
-    "./**/*.js",
+    "./src/**/*.{html,js,jsx,ts,tsx}",
+    "./public/**/*.html",
+    "./*.html",
     "./pages/**/*.php",
     "./pages/**/*.css",
     "./admin/**/*.php",
     "./components/**/*.php"
   ],
-
   theme: {
-    extend: {
-      colors: {
-        'nps-red': '#d62828',
-        'nps-green': '#2c5aa0',
-      }
-    },
+    extend: {},
   },
   plugins: [],
 }

@@ -93,13 +93,25 @@
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
-    color: var(--gray-dark);
+    color: var(--gray-800);
     background: var(--white);
     overflow-x: hidden;
 }
-
+h1, h2 ,h3{
+    font-weight: 700!important;
+    /* line-height: var(--line-height-tight); */
+    /* margin-bottom: var(--space-md); */
+    color: var(--gray-900);
+}
+/* 
+h1 { font-size: var(--font-size-5xl); }
+h2 { font-size: var(--font-size-4xl); }
+h3 { font-size: var(--font-size-3xl); }
+h4 { font-size: var(--font-size-2xl); }
+h5 { font-size: var(--font-size-xl); }
+h6 { font-size: var(--font-size-lg); } */
 .container {
-    max-width: 1200px;
+    max-width: 1536px;
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -235,6 +247,7 @@ nav {
 .hero h1 {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 700;
+    color: var(--gray-900);
     margin-bottom: 1rem;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.5), 0 0 20px rgba(0,0,0,0.3);
     animation: slideInUp 1s ease-out;
@@ -522,21 +535,37 @@ section {
 .eligibility-item {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: var(--space-lg);
     text-align: left;
+    padding: var(--space-xl);
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+}
+
+.eligibility-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
 }
 
 .eligibility-item .icon {
-    font-size: 2.5rem;
+    font-size: var(--font-size-4xl);
     color: var(--secondary);
     min-width: 80px;
 }
 
 .eligibility-item h3 {
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
-    color: var(--dark);
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-sm);
+    color: var(--gray-900);
 }
+
+.eligibility-item p {
+    color: var(--gray-700);
+    margin-bottom: 0;
+}
+
 
 /* Application process timeline */
 .process-steps {
@@ -825,75 +854,58 @@ html {
     text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
 }
 
-/* Apply Now Button - Continuous Color Change Animation */
-a.apply-now-btn,
+
+/* Apply Now Button Styles */
 .apply-now-btn {
-    position: relative !important;
-    overflow: hidden !important;
-    animation: color-cycle 3s infinite !important;
-    z-index: 1 !important;
-    border: none !important;
+    animation: color-cycle 3s infinite;
     color: white !important;
     font-weight: bold !important;
-    text-shadow: 0 0 10px rgba(0,0,0,0.5) !important;
-    transition: transform 0.3s ease !important;
-    background: linear-gradient(45deg, #ff6b6b, #ff8e8e) !important;
-    box-shadow: 0 0 20px rgba(255, 107, 107, 0.5) !important;
+    transform: scale(1);
+    transition: transform 0.3s ease;
 }
 
-a.apply-now-btn::before {
-    content: '' !important;
-    position: absolute !important;
-    top: -50% !important;
-    left: -50% !important;
-    width: 200% !important;
-    height: 200% !important;
-    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent) !important;
-    transform: rotate(45deg) !important;
-    transition: all 0.6s ease !important;
-    opacity: 0 !important;
-    z-index: -1 !important;
+.apply-now-btn:hover {
+    transform: scale(1.05);
+    animation-duration: 1.5s;
 }
 
-a.apply-now-btn:hover::before {
-    opacity: 1 !important;
-    transform: rotate(45deg) translate(50%, 50%) !important;
-}
 
-a.apply-now-btn:hover {
-    transform: translateY(-2px) scale(1.05) !important;
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 @keyframes color-cycle {
-    0% {
-        background: linear-gradient(45deg, #ff6b6b, #ff8e8e) !important;
-        box-shadow: 0 0 20px rgba(255, 107, 107, 0.5) !important;
+    0% { 
+        background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+        box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
     }
-    16.66% {
-        background: linear-gradient(45deg, #4ecdc4, #45b7b8) !important;
-        box-shadow: 0 0 20px rgba(78, 205, 196, 0.5) !important;
+    16.66% { 
+        background: linear-gradient(45deg, #4ecdc4, #44b3aa);
+        box-shadow: 0 4px 15px rgba(78, 205, 196, 0.4);
     }
-    33.33% {
-        background: linear-gradient(45deg, #45b7d1, #96ceb4) !important;
-        box-shadow: 0 0 20px rgba(69, 183, 209, 0.5) !important;
+    33.33% { 
+        background: linear-gradient(45deg, #45b7d1, #357abd);
+        box-shadow: 0 4px 15px rgba(69, 183, 209, 0.4);
     }
-    50% {
-        background: linear-gradient(45deg, #96ceb4, #feca57) !important;
-        box-shadow: 0 0 20px rgba(150, 206, 180, 0.5) !important;
+    50% { 
+        background: linear-gradient(45deg, #96ceb4, #7db999);
+        box-shadow: 0 4px 15px rgba(150, 206, 180, 0.4);
     }
-    66.66% {
-        background: linear-gradient(45deg, #feca57, #ff9ff3) !important;
-        box-shadow: 0 0 20px rgba(254, 202, 87, 0.5) !important;
+    66.66% { 
+        background: linear-gradient(45deg, #feca57, #ff9f43);
+        box-shadow: 0 4px 15px rgba(254, 202, 87, 0.4);
     }
-    83.33% {
-        background: linear-gradient(45deg, #ff9ff3, #54a0ff) !important;
-        box-shadow: 0 0 20px rgba(255, 159, 243, 0.5) !important;
+    83.33% { 
+        background: linear-gradient(45deg, #ff7675, #e84393);
+        box-shadow: 0 4px 15px rgba(255, 118, 117, 0.4);
     }
-    100% {
-        background: linear-gradient(45deg, #54a0ff, #ff6b6b) !important;
-        box-shadow: 0 0 20px rgba(84, 160, 255, 0.5) !important;
+    100% { 
+        background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+        box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
     }
 }
+
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
