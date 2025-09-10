@@ -25,10 +25,10 @@ date_default_timezone_set('Asia/Kolkata');
 </head>
 <body>
     <!-- Navbar -->
-    <?php include '/components/header.php'; ?>
+    <?php include '../components/header.php'; ?>
 
     <main class="pt-20">
-        <div class="container mx-auto px-6 py-12 max-w-4xl">
+        <div class="container mx-auto p-6 max-w-4xl">
             <h1 class="text-4xl font-bold text-[var(--nps-red)] mb-8 text-center">Disclaimer</h1>
             <p class="text-gray-600 text-center mb-12">Last updated: <?php echo date('F j, Y'); ?></p>
 

@@ -95,7 +95,7 @@ date_default_timezone_set('Asia/Kolkata');
     <?php 
     // Set current page for header component
     $current_page = 'home';
-    include '/components/header.php'; 
+    include '../components/header.php'; 
     ?>
 
     <main>

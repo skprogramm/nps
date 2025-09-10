@@ -205,7 +205,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php 
     // Set current page for header component
     $current_page = 'apply';
-    include '/components/header.php'; 
+    include '../components/header.php'; 
     ?>
     <div class="form-container">
         <div class="form-card w-full max-w-2xl p-8">
