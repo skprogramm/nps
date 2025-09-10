@@ -314,7 +314,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
                 <button type="submit" class="submit-btn" id="submitBtn">
                     <i class="fas fa-paper-plane mr-2"></i>
-                    Submit Application
+                    Submit Request
                 </button>
             </form>
         </div>
