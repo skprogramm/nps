@@ -94,7 +94,7 @@ if (!empty($params)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Admissions | NPS Admin</title>
     <!-- Tailwind CSS with Local Priority -->
-    <link rel="stylesheet" href="../assets/css/tailwind.css" onerror="this.onerror=null; this.href='https://cdn.tailwindcss.com/';">
+    <link rel="stylesheet" href="/assets/css/tailwind.css" onerror="this.onerror=null; this.href='https://cdn.tailwindcss.com/';">
 </head>
 <body class="bg-gray-100">
     <nav class="bg-white p-4 shadow flex justify-between items-center">

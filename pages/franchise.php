@@ -69,8 +69,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="manifest" href="../site.webmanifest">
     <meta name="theme-color" content="#667eea">
 
-    <link rel="stylesheet" href="utilities.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/pages/utilities.css">
+    <link rel="stylesheet" href="/pages/style.css">
 
     <script>
     !function(f,b,e,v,n,t,s)
@@ -89,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </noscript>
 
     <!-- Tailwind CSS with Local Priority -->
-    <link rel="stylesheet" href="../assets/css/tailwind.css" onerror="this.onerror=null; this.href='https://cdn.tailwindcss.com/';">
+    <link rel="stylesheet" href="/assets/css/tailwind.css" onerror="this.onerror=null; this.href='https://cdn.tailwindcss.com/';">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">

@@ -14,14 +14,14 @@ date_default_timezone_set('Asia/Kolkata');
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     
     <!-- Tailwind CSS with Local Priority -->
-    <link rel="stylesheet" href="../assets/css/tailwind.css" onerror="this.onerror=null; this.href='https://cdn.tailwindcss.com/';">
+    <link rel="stylesheet" href="/assets/css/tailwind.css" onerror="this.onerror=null; this.href='https://cdn.tailwindcss.com/';">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <link rel="stylesheet" href="utilities.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/pages/utilities.css">
+    <link rel="stylesheet" href="/pages/style.css">
 </head>
 <body>
     <!-- Navbar -->

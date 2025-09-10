@@ -78,7 +78,7 @@ if ($franchiseResult) {
     <title>Admin Dashboard | NPS Education</title>
     
     <!-- Tailwind CSS with Local Priority -->
-    <link rel="stylesheet" href="../assets/css/tailwind.css" onerror="this.onerror=null; this.href='https://cdn.tailwindcss.com/';">
+    <link rel="stylesheet" href="/assets/css/tailwind.css" onerror="this.onerror=null; this.href='https://cdn.tailwindcss.com/';">
     <style>
         .toggle-btn {
           display: flex;
