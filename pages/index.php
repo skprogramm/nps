@@ -85,10 +85,10 @@ date_default_timezone_set('Asia/Kolkata');
     <!-- <link rel="stylesheet" href="css/components.css"> -->
     <!-- <link rel="stylesheet" href="css/layouts.css"> -->
     <!-- <link rel="stylesheet" href="css/pages.css"> -->
-    <link rel="stylesheet" href="utilities.css">
+    <link rel="stylesheet" href="/education.npsvision.com/pages/utilities.css">
     
     <!-- Legacy CSS for backward compatibility -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/education.npsvision.com/pages/style.css">
     
     
 </head>
