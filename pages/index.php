@@ -28,7 +28,7 @@ date_default_timezone_set('Asia/Kolkata');
     
 
     <!-- Tailwind CSS with Local Priority -->
-    <link rel="stylesheet" href="../assets/css/tailwind.css" onerror="this.onerror=null; this.href='https://cdn.tailwindcss.com/';">
+    <link rel="stylesheet" href="/assets/css/tailwind.css" onerror="this.onerror=null; this.href='https://cdn.tailwindcss.com/';">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -53,10 +53,9 @@ date_default_timezone_set('Asia/Kolkata');
     fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=24083382334645039&ev=PageView&noscript=1"
-    /></noscript>
-
-
+    src="https://www.facebook.com/tr?id=24083382334645039&ev=PageView&noscript=1"/>
+    </noscript>
+    
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -85,10 +84,10 @@ date_default_timezone_set('Asia/Kolkata');
     <!-- <link rel="stylesheet" href="css/components.css"> -->
     <!-- <link rel="stylesheet" href="css/layouts.css"> -->
     <!-- <link rel="stylesheet" href="css/pages.css"> -->
-    <link rel="stylesheet" href="utilities.css">
+    <link rel="stylesheet" href="/pages/utilities.css">
     
     <!-- Legacy CSS for backward compatibility -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/pages/style.css">
     
     
 </head>
