@@ -10,6 +10,17 @@ date_default_timezone_set('Asia/Kolkata');
     <meta name="description" content="Terms of Service for NPS Education - Understand the rules and guidelines for using our educational services.">
     <meta name="robots" content="index, follow">
     
+<!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YELNDKM5BZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    
+        gtag('config', 'G-YELNDKM5BZ');
+    </script>
+
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     
